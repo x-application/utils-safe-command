@@ -17,7 +17,7 @@ import x.app.common.ExceptionResult
 @Aspect
 class SafeCommand {
 
-    @Around("@annotation(safeHandle) && args(command)")
+    @Around("@annotation(commandHandler) && args(command)")
     fun safeHandle(joinPoint: ProceedingJoinPoint, commandHandler: CommandHandler, command: AbstractCommand<*>): AbstractResult {
         return try {
             joinPoint.proceed() as AbstractResult
